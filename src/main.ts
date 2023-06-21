@@ -1,6 +1,11 @@
 import { getUser } from "./services/user";
 import { defaultValue, toRef } from "./services/user";
-import { refInterface, refType } from "./models/userInterface";
+import {
+  refInterface,
+  refType,
+  AdminRoles,
+  Decorated,
+} from "./models/userInterface";
 const user = await getUser();
 user.id?.toExponential();
 
@@ -21,11 +26,12 @@ const toRefValue = toRef<string>("hello");
 const refValueInter: refInterface<string> = { value: "hello" };
 const refValueTyped: refType<number> = { value: 2 };
 
+console.log(AdminRoles.coq);
+const d = new Decorated();
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
     ${user.name}<br/>
     ${dValue}<br/>
     ${toRefValue.value}
-
   </div>
 `;
